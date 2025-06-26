@@ -1,8 +1,6 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
+from routes.health_check import router as health_check_router
 
 app = FastAPI()
 
-@app.get("/health")
-def health_check():
-    return JSONResponse(content={"status": "ok"}) 
+app.include_router(health_check_router) 
